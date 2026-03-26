@@ -6,11 +6,11 @@ from tensorflow.keras.applications.efficientnet import preprocess_input
 import gdown
 import os
 
-if os.path.exists(MODEL_PATH):
-    os.remove(MODEL_PATH)
-
 MODEL_PATH = "model.keras"
 
+if os.path.exists(MODEL_PATH):
+    os.remove(MODEL_PATH)
+    
 def download_model():
     if not os.path.exists(MODEL_PATH) or os.path.getsize(MODEL_PATH) < 1000000:
         url = "https://drive.google.com/uc?id=1hK9yXRcMD72i94n5dCY7joW3aJVtlAGV"
