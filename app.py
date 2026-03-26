@@ -3,12 +3,23 @@ from PIL import Image
 import numpy as np
 from keras.models import load_model
 from tensorflow.keras.applications.efficientnet import preprocess_input
+import gdown
+import os
+
+MODEL_PATH = "model.keras"
+
+def download_model():
+    if not os.path.exists(MODEL_PATH):
+        url = "https://drive.google.com/file/d/1hK9yXRcMD72i94n5dCY7joW3aJVtlAGV/view"
+        gdown.download(url, MODEL_PATH, quiet=False)
+
 
 st.title("🚗 Vehicle Classification AI")
 
 @st.cache_resource
 def load_model_cached():
-    return load_model("model.keras")
+    download_model()
+    return load_model(MODEL_PATH)
 
 model = load_model_cached()
 
