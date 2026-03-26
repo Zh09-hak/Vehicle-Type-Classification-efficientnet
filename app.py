@@ -8,12 +8,12 @@ import os
 
 if os.path.exists(MODEL_PATH):
     os.remove(MODEL_PATH)
-    
+
 MODEL_PATH = "model.keras"
 
 def download_model():
     if not os.path.exists(MODEL_PATH) or os.path.getsize(MODEL_PATH) < 1000000:
-        url = "https://drive.google.com/uc?1hK9yXRcMD72i94n5dCY7joW3aJVtlAGV"
+        url = "https://drive.google.com/uc?id=1hK9yXRcMD72i94n5dCY7joW3aJVtlAGV"
         gdown.download(url, MODEL_PATH, quiet=False, fuzzy=True)
 
 st.write("Files in directory:", os.listdir())
