@@ -1,6 +1,6 @@
 import streamlit as st
+from PIL import Image
 import numpy as np
-import cv2
 from keras.models import load_model
 from tensorflow.keras.applications.efficientnet import preprocess_input
 
@@ -25,17 +25,17 @@ labels = {
 uploaded_file = st.file_uploader("Upload an image", type=["jpg", "png", "jpeg"])
 
 if uploaded_file is not None:
-    file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
-    img = cv2.imdecode(file_bytes, 1)
+    image = Image.open(uploaded_file).convert("RGB")
+    st.image(image, caption="Uploaded Image", use_column_width=True)
 
-    st.image(img, caption="Uploaded Image", use_column_width=True)
+    img = image.resize((224, 224))
+    img = np.array(img)
+    
+    from tensorflow.keras.applications.efficientnet import preprocess_input
+    img = preprocess_input(img)
+    img = np.expand_dims(img, axis=0)
 
-    img_resized = cv2.resize(img, (224, 224))
-    img_rgb = cv2.cvtColor(img_resized, cv2.COLOR_BGR2RGB)
-    img_processed = preprocess_input(img_rgb)
-    img_processed = np.expand_dims(img_processed, axis=0)
-
-    pred = model.predict(img_processed)
+    pred = model.predict(img)
     class_id = np.argmax(pred)
     confidence = np.max(pred)
 
