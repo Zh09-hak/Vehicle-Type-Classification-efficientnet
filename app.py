@@ -13,7 +13,11 @@ def download_model():
         url = "https://drive.google.com/uc?id=1ABCxyz123"
         gdown.download(url, MODEL_PATH, quiet=False)
 
+st.write("Files in directory:", os.listdir())
 
+if os.path.exists("model.keras"):
+    st.write("Model size:", os.path.getsize("model.keras"))
+    
 st.title("🚗 Vehicle Classification AI")
 
 @st.cache_resource
