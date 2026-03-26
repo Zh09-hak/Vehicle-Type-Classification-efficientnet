@@ -7,18 +7,16 @@ import gdown
 import os
 
 MODEL_PATH = "model.keras"
-
-if os.path.exists(MODEL_PATH):
-    os.remove(MODEL_PATH)
     
 def download_model():
     if not os.path.exists(MODEL_PATH) or os.path.getsize(MODEL_PATH) < 1000000:
         url = "https://drive.google.com/uc?id=1hK9yXRcMD72i94n5dCY7joW3aJVtlAGV"
         gdown.download(url, MODEL_PATH, quiet=False, fuzzy=True)
-
-st.write("Files in directory:", os.listdir())
     
 st.title("🚗 Vehicle Classification AI")
+st.write("Upload an image to classify vehicle type")
+
+st.markdown("---")
 
 @st.cache_resource
 def load_model_cached():
@@ -54,5 +52,8 @@ if uploaded_file is not None:
     class_id = np.argmax(pred)
     confidence = np.max(pred)
 
-    st.subheader(f"Prediction: {labels[class_id]}")
-    st.write(f"Confidence: {confidence:.4f}")
+    st.success(f"Prediction: {labels[class_id]}")
+    st.info(f"Confidence: {confidence:.2%}")
+
+    for i, prob in enumerate(pred[0]):
+        st.write(f"{labels[i]}: {prob:.4f}")
