@@ -1,6 +1,5 @@
 numpy
-opencv-python
-matplotlib
-scikit-learn
+pillow
 tensorflow
 streamlit
+gdown
