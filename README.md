@@ -25,7 +25,7 @@ The model is built using a pretrained EfficientNet architecture and fine-tuned f
 ---
 
 ## 🌐 Live Demo
-👉 https://your-app.streamlit.app
+👉 https://vehicle-type-classification-efficientnet-drbr7tsy4p4epqerpiqdp.streamlit.app/
 
 ---
 
