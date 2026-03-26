@@ -10,7 +10,7 @@ MODEL_PATH = "model.keras"
 
 def download_model():
     if not os.path.exists(MODEL_PATH):
-        url = "https://drive.google.com/file/d/1hK9yXRcMD72i94n5dCY7joW3aJVtlAGV/view"
+        url = "https://drive.google.com/uc?id=1ABCxyz123"
         gdown.download(url, MODEL_PATH, quiet=False)
 
 
