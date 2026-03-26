@@ -24,6 +24,11 @@ The model is built using a pretrained EfficientNet architecture and fine-tuned f
 
 ---
 
+## 🌐 Live Demo
+👉 https://your-app.streamlit.app
+
+---
+
 ## 📊 Dataset
 
 Dataset from Kaggle:
@@ -127,6 +132,16 @@ python src/train.py
 ```
 python src/predict.py
 ```
+
+---
+
+## 🌐 Deployment
+
+The model is deployed using Streamlit Cloud.
+
+- Image upload supported
+- Real-time prediction
+- Model loaded dynamically from cloud storage
 
 ---
 
